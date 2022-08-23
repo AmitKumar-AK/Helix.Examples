@@ -75,7 +75,7 @@ try {
     }
     Write-Host "Generating Traefik TLS certificate..." -ForegroundColor Green
     & $mkcert -install
-    & $mkcert "*.basic-company-nextjs.localhost"
+    & $mkcert "*.contoso-1-nextjs.localhost"
 }
 catch {
     Write-Error "An error occurred while attempting to generate TLS certificate: $_"
@@ -91,10 +91,10 @@ finally {
 
 Write-Host "Adding Windows hosts file entries..." -ForegroundColor Green
 
-Add-HostsEntry "cm.basic-company-nextjs.localhost"
-Add-HostsEntry "cd.basic-company-nextjs.localhost"
-Add-HostsEntry "id.basic-company-nextjs.localhost"
-Add-HostsEntry "www.basic-company-nextjs.localhost"
+Add-HostsEntry "cm.contoso-1-nextjs.localhost"
+Add-HostsEntry "cd.contoso-1-nextjs.localhost"
+Add-HostsEntry "id.contoso-1-nextjs.localhost"
+Add-HostsEntry "www.contoso-1-nextjs.localhost"
 
 
 ###############################
@@ -108,13 +108,13 @@ if ($InitEnv) {
     Set-EnvFileVariable "HOST_LICENSE_FOLDER" -Value $LicenseXmlPath
 
     # CM_HOST
-    Set-EnvFileVariable "CM_HOST" -Value "cm.basic-company-nextjs.localhost"
+    Set-EnvFileVariable "CM_HOST" -Value "cm.contoso-1-nextjs.localhost"
 
     # ID_HOST
-    Set-EnvFileVariable "ID_HOST" -Value "id.basic-company-nextjs.localhost"
+    Set-EnvFileVariable "ID_HOST" -Value "id.contoso-1-nextjs.localhost"
 
     # RENDERING_HOST
-    Set-EnvFileVariable "RENDERING_HOST" -Value "www.basic-company-nextjs.localhost"
+    Set-EnvFileVariable "RENDERING_HOST" -Value "www.contoso-1-nextjs.localhost"
 
     # REPORTING_API_KEY = random 64-128 chars
     Set-EnvFileVariable "REPORTING_API_KEY" -Value (Get-SitecoreRandomString 128 -DisallowSpecial)
